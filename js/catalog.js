@@ -2,6 +2,15 @@
 
 'use strict';
 
+/*
+Process: read through so you understand it
+2. Plan 1 todo: find something that isn't happening and the TODO that matches it
+3. Plan around the todo, console log if needed, figure out your variables
+4. Finish the todo
+
+5. Repeat step 2-4 : find something missing from the flow of the app, missing from the user experience
+*/
+
 // Set up an empty cart for use on this page.
 var cart = new Cart([]);
 
@@ -9,10 +18,13 @@ var cart = new Cart([]);
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
 
-  //TODO: Add an <option> tag inside the form's select for each product
+  //DONE: Add an <option> tag inside the form's select for each product
   var selectElement = document.getElementById('items');
+  // make an option, append it to items, give it content FOR EACH thing in Product.allProducts
   for (var i in Product.allProducts) {
-
+    var optionElement = document.createElement('option');
+    optionElement.textContent = Product.allProducts[i].name;
+    selectElement.appendChild(optionElement);
   }
 
 }
@@ -22,7 +34,8 @@ function populateForm() {
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
 
-  // TODO: Prevent the page from reloading
+  // DONE: Prevent the page from reloading
+  event.preventDefault();
 
   // Do all the things ...
   addSelectedItemToCart();
