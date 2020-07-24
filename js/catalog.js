@@ -13,7 +13,7 @@ Process: read through so you understand it
 
 // Set up an empty cart for use on this page.
 var cart = new Cart([]);
-
+var counter = 0;
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
@@ -47,21 +47,32 @@ function handleSubmit(event) {
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
-  var getItem = document.getElementById('items');
-  var getQty = document.getElementById('quantity');
-
+  var getItemFromPage = document.getElementById('items');
+  var getQuantity = document.getElementById('option');
+  
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
+  counter++;
+  cart.addItem(getItemFromPage, getQuantity);
+}
+// this.product = product;
+// this.quantity = quantity;
+
+// DONE: Update the cart count in the header nav with the number of items in the Cart
+function updateCounter() {
+  debugger;
+  var spanElement = document.getElementById('itemCount');
+  spanElement.innerHTML = ('');
+  var childElement = document.createElement('li');
+  childElement.textContent = counter;
+  spanElement.appendChild(childElement)
 }
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
-
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
+// DONE: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
-  // TODO: Get the item and quantity from the form
-  // TODO: Add a new element to the cartContents div with that information
+  // : Get the item and quantity from the form
+  // : Add a new element to the cartContents div with that information
   var mySelectedItems = (event.target.items.value + event.target.quantity.value);
   var list = document.getElementById('cartContents');
   var listItems = document.createElement('li');
